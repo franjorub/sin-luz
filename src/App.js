@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { subscribeToTimer } from './api';
+import Tweet from "./Tweet";
 
 class App extends Component {
+
+  state = {
+    tweets: []
+  };
+
+  constructor(props) {
+    super(props);
+
+    subscribeToTimer((err, tweets) => this.setState({ 
+      tweets 
+    }));
+  }
+
   render() {
+    const { tweets } = this.state
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        { 
+          tweets.length == 0 
+            ? "No tweets yet." 
+            : tweets.map((tweet) => {
+                return <Tweet text={tweet.text} />
+              })
+        }
       </div>
     );
   }
