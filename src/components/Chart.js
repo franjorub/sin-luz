@@ -3,24 +3,13 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
-const data = [
-  {
-    name: 'Page A', uv: 4000, amt: 2400,
-  },
-  {
-    name: 'Page B', uv: 3000, amt: 2210,
-  },
-  {
-    name: 'Page C', uv: 2000, amt: 2290,
-  },
-  {
-    name: 'Page D', uv: 2780, amt: 2000,
-  },
-];
+
 
 
 export default class Example extends Component {
+
   render() {
+  	const { data } = this.props
     return (
     	<ResponsiveContainer width="99%" height={ 300 } >
     		<BarChart
@@ -34,7 +23,7 @@ export default class Example extends Component {
 		        <YAxis />
 		        <Tooltip />
 		        <Legend />
-		        <Bar dataKey="uv" fill="#651fff" />
+		        <Bar dataKey="value" fill="#651fff" />
       		</BarChart>
     	</ResponsiveContainer>
       

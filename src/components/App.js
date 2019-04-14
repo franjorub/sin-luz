@@ -10,15 +10,17 @@ import Chart from "./Chart"
 
 class App extends Component {
   state = {
-    tweets: []
+    tweets: [],
+    data: {}
   };
 
   constructor(props) {
     super(props);
 
-    subscribeToTimer((err, tweets) =>
+    subscribeToTimer((err, tweets, data) =>
       this.setState({
-        tweets
+        tweets,
+        data
       })
     );
   }
@@ -52,7 +54,8 @@ class App extends Component {
           <Grid item xs={12} sm={6} md={8}>
             <Grid container justify="center" alignItems="center">
               <Grid item xs={12}>
-                <Chart />
+
+                <Chart data={this.state.data}/>
               </Grid>
               <Grid item xs={12}>
                 <Typography component="h2" align="center" variant="title">What is this project about?</Typography>

@@ -1,5 +1,6 @@
 const Twit = require('twit')
 const io = require('socket.io')()
+const {data, updateState } = require('./utils/data')
 let tweets = []
 
 const T = new Twit({
@@ -17,6 +18,7 @@ const stream = T.stream('statuses/filter', { track: '#sinluz' })
 stream.on('tweet', function (tweet) {
   console.log('new Tweet Arrive!')
   if(tweets.length >= 4) tweets = []
+  updateState(tweet.text)
   tweets.push(tweet)
 })
 
@@ -25,7 +27,7 @@ io.on('connection', (client) => {
     console.log('client is subscribing to timer with interval ');
     setInterval(() => {
 
-    	client.emit('timer', tweets);
+    	client.emit('timer', tweets, data);
 
     }, interval);
   });
