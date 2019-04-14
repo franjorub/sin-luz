@@ -16,8 +16,8 @@ const stream = T.stream('statuses/filter', { track: '#sinluz' })
 
 stream.on('tweet', function (tweet) {
   console.log('new Tweet Arrive!')
-  console.log(tweet)
   tweets.push(tweet)
+  if(tweets.length > 5) tweets = []
 })
 
 io.on('connection', (client) => {
