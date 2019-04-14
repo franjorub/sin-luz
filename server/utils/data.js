@@ -18,11 +18,11 @@ let data = [
 		"value": 0,
 	},
 	{
-		"name": "anzoategui",
+		"name": "miranda",
 		"value": 0,
 	},
 	{
-		"name": "amazonas",
+		"name": "caracas",
 		"value": 0,
 	},
 	{

@@ -18,7 +18,7 @@ export default class Example extends Component {
 		          top: 5, right: 30, left: 20, bottom: 30,
 		        }}
 		    >
-		        <CartesianGrid strokeDasharray="3 3" />
+		        <CartesianGrid strokeDasharray="2 2" />
 		        <XAxis dataKey="name" />
 		        <YAxis />
 		        <Tooltip />
